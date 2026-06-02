@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->date('date');
             $table->integer('nights');
-            $table->decimal('room_temperature', 4, 1);
+            $table->decimal('room_temperature', 3, 1);
             $table->timestamps();
         });
     }
