@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -65,5 +66,28 @@ Route::prefix('responder')->group(function () {
     Route::get('/multiply/{number1}/{number2}', function (int $number1, int $number2) {
         return $number1 * $number2;
     })->whereNumber(['number1', 'number2']);
+});
+
+Route::prefix('bookler')->group(function () {
+
+    Route::prefix('books')->group(function () {
+        Route::get('/', [BookController::class, 'index']);
+        Route::get('/{id}', [BookController::class, 'show'])->whereNumber('id');
+    });
+
+    Route::prefix('book-finder')->group(function () {
+        Route::get('/slug/{slug}', [BookController::class, 'findBySlug']);
+        Route::get('/year/{year}', [BookController::class, 'findByYear'])->whereNumber('year');
+        Route::get('/max-pages/{pages}', [BookController::class, 'findByMaxPages'])->whereNumber('pages');
+    });
+
+    Route::get('/search/{search}', [BookController::class, 'search']);
+
+    Route::prefix('meta')->group(function () {
+        Route::get('/count', [BookController::class, 'count']);
+        Route::get('/avg-pages', [BookController::class, 'avgPages']);
+    });
+
+    Route::get('/dashboard', [BookController::class, 'dashboard']);
 });
 
