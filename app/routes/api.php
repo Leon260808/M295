@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\TopicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -89,5 +92,11 @@ Route::prefix('bookler')->group(function () {
     });
 
     Route::get('/dashboard', [BookController::class, 'dashboard']);
+});
+
+Route::prefix('relationsheep')->group(function () {
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::get('/topics/{slug}/posts', [TopicController::class, 'posts']);
+    Route::get('/tags/{tagSlug}/posts', [TagController::class, 'posts']);
 });
 
