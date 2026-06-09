@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ClownController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
@@ -115,5 +116,18 @@ Route::prefix('k-rest-y')->group(function () {
     Route::post('/clowns', [ClownController::class, 'store']);
     Route::match(['put', 'patch'], '/clowns/{clown}', [ClownController::class, 'update'])->whereNumber('clown');
     Route::delete('/clowns/{clown}', [ClownController::class, 'destroy'])->whereNumber('clown');
+});
+
+Route::prefix('guardener')->group(function () {
+
+    // Öffentlich: Login gibt bei korrekten Credentials einen Token zurück.
+    Route::post('/login', [LoginController::class, 'authenticate']);
+
+    // Geschützt: nur mit gültigem Bearer-Token erreichbar.
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/geheim', [LoginController::class, 'geheim']);
+        Route::get('/auth', [LoginController::class, 'auth']);
+        Route::post('/logout', [LoginController::class, 'logout']);
+    });
 });
 
