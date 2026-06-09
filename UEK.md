@@ -54,12 +54,12 @@
 
 | Nr. | Titel | Link | Thema | Status |
 |-----|-------|------|-------|--------|
-| 1 | Responder | https://m295.ict-bz.ch/aufgaben/responder | Routes, HTTP-Responses | offen |
-| 2 | Hallo Velo! | https://m295.ict-bz.ch/aufgaben/hallo-velo | Datenbank, Eloquent ORM | offen |
-| 3 | Migrations | https://m295.ict-bz.ch/aufgaben/migrations | Migrations | offen |
-| 4 | Book'ler | https://m295.ict-bz.ch/aufgaben/bookler | Eloquent Models, Controllers, Collections | offen |
-| 5 | RelationSheep | https://m295.ict-bz.ch/aufgaben/relationsheep | Relationships | offen |
-| 6 | Ackerer | https://m295.ict-bz.ch/aufgaben/ackerer | Seeder & Factories, Relationships | offen |
+| 1 | Responder | https://m295.ict-bz.ch/aufgaben/responder | Routes, HTTP-Responses | erledigt |
+| 2 | Hallo Velo! | https://m295.ict-bz.ch/aufgaben/hallo-velo | Datenbank, Eloquent ORM | erledigt |
+| 3 | Migrations | https://m295.ict-bz.ch/aufgaben/migrations | Migrations | erledigt |
+| 4 | Book'ler | https://m295.ict-bz.ch/aufgaben/bookler | Eloquent Models, Controllers, Collections | erledigt |
+| 5 | RelationSheep | https://m295.ict-bz.ch/aufgaben/relationsheep | Relationships | erledigt |
+| 6 | Ackerer | https://m295.ict-bz.ch/aufgaben/ackerer | Seeder & Factories, Relationships | erledigt |
 | 7 | k-REST-y | https://m295.ict-bz.ch/aufgaben/k-rest-y | Request Validation, API Resources | offen |
 | 8 | Guardener | https://m295.ict-bz.ch/aufgaben/guardener | Authorization / Sanctum | offen |
 | 9 | TwITter | https://m295.ict-bz.ch/aufgaben/twitter | Abschlussprojekt (alle Konzepte) | offen |
