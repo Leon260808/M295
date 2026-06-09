@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ClownController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
@@ -106,5 +107,13 @@ Route::prefix('ackerer')->group(function () {
     Route::get('/plants', [PlantController::class, 'index']);
     Route::get('/plants/{slug}', [PlantController::class, 'show']);
     Route::get('/areas', [AreaController::class, 'index']);
+});
+
+Route::prefix('k-rest-y')->group(function () {
+    Route::get('/clowns', [ClownController::class, 'index']);
+    Route::get('/clowns/{clown}', [ClownController::class, 'show'])->whereNumber('clown');
+    Route::post('/clowns', [ClownController::class, 'store']);
+    Route::match(['put', 'patch'], '/clowns/{clown}', [ClownController::class, 'update'])->whereNumber('clown');
+    Route::delete('/clowns/{clown}', [ClownController::class, 'destroy'])->whereNumber('clown');
 });
 
