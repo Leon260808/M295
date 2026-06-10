@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TweetResource;
 use App\Models\Tweet;
 
 class TweetController extends Controller
@@ -10,15 +11,6 @@ class TweetController extends Controller
     {
         $tweets = Tweet::latest()->take(100)->get();
 
-        $tweets = $tweets->map(function ($tweet) {
-            $tweet->user = [
-                'id' => $tweet->user->id,
-                'name' => $tweet->user->name,
-            ];
-
-            return $tweet;
-        });
-
-        return ['data' => $tweets];
+        return TweetResource::collection($tweets);
     }
 }
