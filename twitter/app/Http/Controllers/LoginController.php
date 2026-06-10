@@ -10,7 +10,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
-            $token = $request->user()->createToken('api')->plainTextToken;
+            $token = $request->user()->createToken('auth_token')->plainTextToken;
 
             return ['token' => $token];
         }
