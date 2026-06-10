@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -12,3 +13,5 @@ Route::get('/user', function (Request $request) {
 Route::get('/tweets', [TweetController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/users/{id}/tweets', [UserController::class, 'tweets']);
+
+Route::post('/login', [LoginController::class, 'login']);
