@@ -25,9 +25,8 @@ class TweetController extends Controller
         return TweetResource::make($tweet);
     }
 
-    public function like($id)
+    public function like(Tweet $tweet)
     {
-        $tweet = Tweet::findOrFail($id);
         $tweet->increment('likes');
 
         return TweetResource::make($tweet);

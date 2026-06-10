@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show($id)
+    public function show(User $user)
     {
-        return UserResource::make(User::findOrFail($id));
+        return UserResource::make($user);
     }
 
     public function me(Request $request)
@@ -43,10 +43,9 @@ class UserController extends Controller
         return ['message' => 'User deleted'];
     }
 
-    public function tweets($id)
+    public function tweets(User $user)
     {
-        $tweets = User::findOrFail($id)
-            ->tweets()
+        $tweets = $user->tweets()
             ->with('user')
             ->latest()
             ->paginate(10);
