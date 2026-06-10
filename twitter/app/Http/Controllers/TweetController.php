@@ -12,6 +12,7 @@ class TweetController extends Controller
 
         $tweets = $tweets->map(function ($tweet) {
             $tweet->user = [
+                'id' => 1,
                 'name' => 'Franzi Musterfrau',
             ];
 
