@@ -18,4 +18,5 @@ Route::get('/users/{id}/tweets', [UserController::class, 'tweets']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/auth', [LoginController::class, 'checkAuth'])->middleware('auth:sanctum');
 Route::get('/me', [UserController::class, 'me'])->middleware('auth:sanctum');
+Route::put('/me', [UserController::class, 'updateMe'])->middleware('auth:sanctum');
 Route::match(['get', 'post'], '/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');

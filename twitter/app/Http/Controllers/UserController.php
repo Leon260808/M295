@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\TweetResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -17,6 +18,22 @@ class UserController extends Controller
     public function me(Request $request)
     {
         return UserResource::make($request->user());
+    }
+
+    public function updateMe(UpdateUserRequest $request)
+    {
+        $user = $request->user();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        return UserResource::make($user);
     }
 
     public function tweets($id)
