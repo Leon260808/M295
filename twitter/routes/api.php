@@ -15,3 +15,4 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/users/{id}/tweets', [UserController::class, 'tweets']);
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/auth', [LoginController::class, 'checkAuth'])->middleware('auth:sanctum');
