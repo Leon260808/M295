@@ -12,6 +12,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/tweets', [TweetController::class, 'index']);
 Route::post('/tweets', [TweetController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/tweets/{id}/like', [TweetController::class, 'like'])->middleware('auth:sanctum');
 Route::get('/users/{id}', [UserController::class, 'show']);
 Route::get('/users/{id}/tweets', [UserController::class, 'tweets']);
 
