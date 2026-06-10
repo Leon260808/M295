@@ -17,5 +17,11 @@ class DatabaseSeeder extends Seeder
             ->count(20)
             ->has(Tweet::factory()->count(30))
             ->create();
+
+        // E-Mail und Passwort des 1. Users anpassen
+        User::first()->update([
+            'email' => 'user@example.com',
+            'password' => bcrypt('password'),
+        ]);
     }
 }
