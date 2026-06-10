@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 
 class UserController extends Controller
 {
     public function show($id)
     {
-        return ['data' => User::findOrFail($id)];
+        return UserResource::make(User::findOrFail($id));
     }
 }
