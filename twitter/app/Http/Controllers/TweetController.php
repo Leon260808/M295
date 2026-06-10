@@ -9,7 +9,7 @@ class TweetController extends Controller
 {
     public function index()
     {
-        $tweets = Tweet::latest()->take(100)->get();
+        $tweets = Tweet::with('user')->latest()->paginate(100);
 
         return TweetResource::collection($tweets);
     }
