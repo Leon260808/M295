@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,5 +53,21 @@ class User extends Authenticatable
     public function tweets(): HasMany
     {
         return $this->hasMany(Tweet::class);
+    }
+
+    protected function isVerified(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->totalLikes() > 80000,
+        );
+    }
+
+    public function totalLikes(): int
+    {
+        if (array_key_exists('tweets_sum_likes', $this->getAttributes())) {
+            return (int) $this->tweets_sum_likes;
+        }
+
+        return (int) $this->tweets()->sum('likes');
     }
 }

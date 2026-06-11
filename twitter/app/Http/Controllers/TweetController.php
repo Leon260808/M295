@@ -10,7 +10,9 @@ class TweetController extends Controller
 {
     public function index()
     {
-        $tweets = Tweet::with('user')->latest()->paginate(100);
+        $tweets = Tweet::with(['user' => fn ($query) => $query->withSum('tweets', 'likes')])
+            ->latest()
+            ->paginate(100);
 
         return TweetResource::collection($tweets);
     }

@@ -46,7 +46,7 @@ class UserController extends Controller
     public function tweets(User $user)
     {
         $tweets = $user->tweets()
-            ->with('user')
+            ->with(['user' => fn ($query) => $query->withSum('tweets', 'likes')])
             ->latest()
             ->paginate(10);
 
